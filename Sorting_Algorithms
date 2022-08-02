@@ -22,3 +22,84 @@ for i in range(len(list1)):
             list1[j],list[j+1] == list1[j+1],list1[j]
 
 print(list1)
+
+
+2.Insertion Sort Algorithm.
+'''Insertion Sort Algorithm
+This works by taking elements one by one from a list and insert them in a correct position into a new sorted list.
+In arrays, new list and the remaining elements uses same array space, but insertion is expensive.
+requiring shifting all elements all over by one.
+'''
+def InsertioSort(arr):
+    for i in range(len(arr)):
+        key = arr[i]
+        j = i-1
+        while (j>=0 and key < arr[j]):
+            arr[j+1] = arr[j]
+            j = j-1
+        arr[j+1] = key
+
+    return arr
+arr = [1,45,67,99,22,34,45,78,68,98]
+result = InsertioSort(arr)
+print(arr)
+
+3.Merge Sort Algorithm
+'''MergeSort is an Example of Divide and Conquer Strategy.
+Merge sort divides the array into two equal parts and combines in a Sorted manner.
+It is a Recursive algorithm continually splits an array into half.
+If the array is empty or one element,it is sorted by base condition.
+If the array has more than one element,we split the array and invoke the merge sort on the both half.
+Once two half s are sorted once merge is performed.
+ '''
+def MergeSort(arr):
+    if len(arr) > 1:
+        r = len(arr)//2
+        LH = arr[:r]
+        RH = arr[r:]
+        MergeSort(LH)
+        MergeSort(RH)
+
+        i = j = k = 0
+        while i < len(LH) and j < len(RH):
+            if LH[i] < RH[j]:
+                arr[k] = LH[i]
+                i = i+1
+            else:
+                arr[k] = RH[j]
+                j = j+1
+
+            k = k+1
+
+        while i < len(LH):
+            arr[k] = LH[i]
+            i = i+1
+            k = k+1
+        while j < len(RH):
+            arr[k] = RH[j]
+            j = j+1
+            k = k+1
+arr = [1,65,75,78,34,99,23,25,45,1999]
+MergeSort(arr)
+print(arr)
+
+4.Selection Algorithm
+'''
+Selection Sort Algorithm:
+Def:Selection sort is the child's algorithm; Simple , but inefficient. Find the Smallest element using linear scan and
+move it to the front.(swapping it with the front element).Then,find the second smallest and move it, again
+doing a linear scan.Continue doing this until all the elements are in place.
+'''
+arr = [1,12,24,35,45,49,65,79,89,99]
+n = len(arr)
+for i in range(n-1):
+    minimum_element = arr[i]
+    index = i
+    for j in range(i+1):
+        if minimum_element < arr[j]:
+            minimum_element = arr[j]
+            index = j
+    arr[i],arr[index] = arr[index],arr[i]
+print(arr)
+
+5.
